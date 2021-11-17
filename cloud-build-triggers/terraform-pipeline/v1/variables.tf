@@ -34,6 +34,12 @@ variable "push_branch_trigger_plan" {
   description = "What branch do you want a trigger to run for a Terraform Plan"
 }
 
+variable "pull_branch_trigger_apply" {
+  default = "main"
+  type = string
+  description = "What branch do you want a trigger to run for a Terraform Apply"
+}
+
 variable "github_repo_owner" {
   type = string
   description = "What is the owner of the repo?  For example: The owner for https://github.com/googlecloudplatform/cloud-builders is googlecloudplatform."
