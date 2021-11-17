@@ -81,7 +81,8 @@ resource "google_organization_iam_binding" "org_admins" {
 resource "google_organization_iam_binding" "org_policy_admins" {
   members = [
     "user:${var.your_id}",
-    "serviceAccount:${var.org_iam_org_policies_service_account_id}"
+    "serviceAccount:${var.org_iam_org_policies_service_account_id}",
+    "serviceAccount:${var.folder_structure_service_account_id}"
   ]
   org_id  = var.organization_id
   role    = "roles/orgpolicy.policyAdmin"

@@ -25,8 +25,6 @@ variable "folder_structure_service_account_id" {}
 
 variable "access_context_manager_service_account_id" {}
 
-variable "external_users_for_os_login" {}
-
 variable "organization_id" {
   type        = string
   description = "Root domain identity. Allows all users with identity in domain to see org node. Helps users know they are working within appropriate space"
