@@ -136,3 +136,16 @@ resource "google_organization_iam_binding" "folder_admins" {
   org_id  = var.organization_id
   role = "roles/resourcemanager.folderAdmin"
 }
+
+/******************************************
+  Custom Role Admins
+ *****************************************/
+
+resource "google_organization_iam_binding" "custom_role_admins" {
+  members = [
+    "user:${var.your_id}",
+    "serviceAccount:${var.org_iam_org_policies_service_account_id}"
+  ]
+  org_id  = var.organization_id
+  role = "roles/iam.organizationRoleAdmin"
+}

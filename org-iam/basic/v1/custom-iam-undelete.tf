@@ -19,6 +19,7 @@
  *****************************************/
 
 resource "google_organization_iam_custom_role" "undelete" {
+  depends_on = [google_organization_iam_binding.custom_role_admins]
   org_id      = var.organization_id
   permissions = ["resourcemanager.projects.undelete"]
   role_id     = "custom_project_undelete"
@@ -26,6 +27,7 @@ resource "google_organization_iam_custom_role" "undelete" {
 }
 
 resource "google_organization_iam_member" "undelete_role" {
+  depends_on = [google_organization_iam_custom_role.undelete]
   member = "user:${var.your_id}"
   org_id = var.organization_id
   role   = google_organization_iam_custom_role.undelete.id
