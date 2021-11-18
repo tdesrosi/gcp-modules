@@ -89,20 +89,6 @@ resource "google_organization_iam_binding" "org_policy_admins" {
 }
 
 /******************************************
-  Access Context Manager Admins
- *****************************************/
-
-resource "google_organization_iam_binding" "access_context_manager_admins" {
-  members = [
-    "user:${var.your_id}",
-    "serviceAccount:${var.access_context_manager_service_account_id}"
-  ]
-  org_id  = var.organization_id
-  role    = "roles/orgpolicy.policyAdmin"
-}
-
-
-/******************************************
   Security Center Admins
  *****************************************/
 
