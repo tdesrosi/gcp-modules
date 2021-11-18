@@ -18,7 +18,42 @@
  *****************************************/
 
 locals {
-  mapped_apis = toset(var.apis_to_enable)
+  mapped_apis = toset(local.apis_to_enable)
+
+  apis_to_enable = [
+    "logging.googleapis.com",
+    "cloudbuild.googleapis.com",
+    "container.googleapis.com",
+    "secretmanager.googleapis.com",
+    "artifactregistry.googleapis.com",
+    "bigquery.googleapis.com",
+    "cloudfunctions.googleapis.com",
+    "monitoring.googleapis.com",
+    "storage.googleapis.com",
+    "compute.googleapis.com",
+    "containeranalysis.googleapis.com",
+    "containerregistry.googleapis.com",
+    "datacatalog.googleapis.com",
+    "dataflow.googleapis.com",
+    "gkeconnect.googleapis.com",
+    "gkehub.googleapis.com",
+    "oslogin.googleapis.com",
+    "pubsub.googleapis.com",
+    "vpcaccess.googleapis.com",
+    "servicedirectory.googleapis.com",
+    "osconfig.googleapis.com",
+    "run.googleapis.com",
+    "dns.googleapis.com",
+    "cloudkms.googleapis.com",
+    "networkconnectivity.googleapis.com",
+    "networkmanagement.googleapis.com",
+    "networkconnectivity.googleapis.com",
+    "networktopology.googleapis.com",
+    "networksecurity.googleapis.com",
+    "networkservices.googleapis.com",
+    "recommender.googleapis.com",
+    "dlp.googleapis.com",
+  ]
 }
 
 resource "google_project_service" "enable_api" {

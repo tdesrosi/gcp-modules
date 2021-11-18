@@ -91,6 +91,14 @@ locals {
     "run.googleapis.com",
 
     "dns.googleapis.com",
+    "networkconnectivity.googleapis.com",
+    "networkmanagement.googleapis.com",
+    "networkconnectivity.googleapis.com",
+    "networktopology.googleapis.com",
+    "networksecurity.googleapis.com",
+    "networkservices.googleapis.com",
+    "cloudlatencytest.googleapis.com",
+    "recommender.googleapis.com",
 
   ]
 }

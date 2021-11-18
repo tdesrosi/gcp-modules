@@ -14,27 +14,18 @@
  */
 
 /******************************************
-  Input Variables
+  Custom IAM
+  Without this custom role you cannot recover project w/o Owner
  *****************************************/
 
-variable "project_id_category" {
-  description = "A  category to help distinguish this set of projects from another set"
-  type        = string
+resource "google_organization_iam_custom_role" "undelete" {
+  org_id      = var.organization_id
+  permissions = ["resourcemanager.projects.undelete"]
+  role_id     = "custom_project_undelete"
+  title       = "Undelete Project Permission"
 }
 
-variable "project_id_unique" {
-  description = "A unique descriptor for your project"
-  type = string
+resource "google_project_iam_member" "undelete_role" {
+  member = "user:${var.your_id}"
+  role   = google_organization_iam_custom_role.undelete.id
 }
-
-variable "folder_id" {
-  description = "The folder ID of where the project will reside."
-  type        = string
-}
-
-variable "billing_account_id" {
-  description = "Billing Account ID where costs of the project will be charged."
-  type        = string
-}
-
-variable "project_admin_id" {}
