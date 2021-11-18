@@ -27,15 +27,6 @@ output "firewall_rule_iap_id" {
   description = "ID of firewall rule created"
 }
 
-output "firewall_rule_rfc_self_link" {
-  value       = google_compute_firewall.firewall_rule_rfc.self_link
-  description = "Self link of firewall rule created"
-}
-output "firewall_rule_rfc_id" {
-  value       = google_compute_firewall.firewall_rule_rfc.id
-  description = "ID of firewall rule created"
-}
-
 output "network_self_link" {
   value = google_compute_network.network.self_link
 }
@@ -55,19 +46,3 @@ output "subnet_region_2_self_link" {
 output "subnet_region_2_id" {
   value = google_compute_subnetwork.subnet_2.id
 }
-
-output "route_destination_range" {
-  value       = google_compute_route.route.dest_range
-  description = "Destination range for route created"
-}
-
-output "route_id" {
-  value       = google_compute_route.route.id
-  description = "ID for route created"
-}
-
-output "route_self_link" {
-  value       = google_compute_route.route.self_link
-  description = "Self link for route created"
-}
-
