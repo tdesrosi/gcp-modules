@@ -48,16 +48,8 @@ locals {
   ]
 }
 
-resource "google_project_service" "enable_api" {
-  depends_on          = [google_project.project]
-  for_each            = local.mapped_apis
-  project             = google_project.project.project_id
-  service             = each.value
-  disable_on_destroy  = false
-}
-
 resource "google_project_iam_member" "iam_member" {
   for_each = local.iam_roles
-  member = var.project_admin_id
+  member = "user:${var.project_admin_id}"
   role   = each.value
 }
