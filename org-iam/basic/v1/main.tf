@@ -127,7 +127,7 @@ resource "google_organization_iam_binding" "folder_admins" {
   Shared VPC Admin
  *****************************************/
 
-resource "google_organization_iam_binding" "folder_admins" {
+resource "google_organization_iam_binding" "shared_vpc_admins" {
   members = [
     "user:${var.your_id}",
     "serviceAccount:${var.base_projects_service_account_id}"
