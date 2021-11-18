@@ -25,7 +25,8 @@ resource "google_organization_iam_custom_role" "undelete" {
   title       = "Undelete Project Permission"
 }
 
-resource "google_project_iam_member" "undelete_role" {
+resource "google_organization_iam_member" "undelete_role" {
   member = "user:${var.your_id}"
+  org_id = var.organization_id
   role   = google_organization_iam_custom_role.undelete.id
 }
