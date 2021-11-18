@@ -50,6 +50,7 @@ locals {
 
 resource "google_project_iam_member" "iam_member" {
   for_each = local.iam_roles
+  project = google_project.project.project_id
   member = "user:${var.project_admin_id}"
   role   = each.value
 }
