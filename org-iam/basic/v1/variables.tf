@@ -23,7 +23,10 @@ variable "org_iam_org_policies_service_account_id" {}
 
 variable "folder_structure_service_account_id" {}
 
+variable "base_projects_service_account_id" {}
+
 variable "organization_id" {
   type        = string
   description = "Root domain identity. Allows all users with identity in domain to see org node. Helps users know they are working within appropriate space"
 }
+
