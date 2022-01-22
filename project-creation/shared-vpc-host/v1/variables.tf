@@ -41,3 +41,8 @@ variable "project_admin_group" {
   description = "Group responsible for administration of this project"
   type        = string
 }
+
+variable "project_service_account" {
+  description = "Service Account responsible for deploying resources in the project"
+  type = string
+}

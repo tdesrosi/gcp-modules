@@ -54,3 +54,10 @@ resource "google_project_iam_member" "iam_member" {
   member = "group:${var.project_admin_group}"
   role   = each.value
 }
+
+resource "google_project_iam_member" "service_account_iam_member" {
+  for_each = local.iam_roles
+  project = google_project.project.project_id
+  member = "serviceAccount:${var.project_admin_group}"
+  role   = each.value
+}
