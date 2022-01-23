@@ -21,7 +21,7 @@ resource "google_compute_firewall" "firewall_rule_iap" {
 
 }
 
-resource "google_compute_firewall" "firewall_rule" {
+resource "google_compute_firewall" "firewall_rule_deny_all_egress" {
   project             = var.project_id
   name                = "${var.network_name}-deny-all-egress-all"
   network             = google_compute_network.network.self_link
@@ -51,7 +51,7 @@ resource "google_compute_firewall" "firewall_rule" {
 
 }
 
-resource "google_compute_firewall" "firewall_rule" {
+resource "google_compute_firewall" "firewall_rule_deny_all_ingress" {
   project         = var.project_id
   name            = "${var.network_name}-deny-all-ingress-all"
   network         = google_compute_network.network.self_link
