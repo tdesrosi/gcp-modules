@@ -22,7 +22,7 @@ resource "google_compute_network" "network" {
   name                            = var.network_name
   routing_mode                    = "GLOBAL"
   auto_create_subnetworks         = false
-  delete_default_routes_on_create = false
+  delete_default_routes_on_create = true
 }
 
 /******************************************
