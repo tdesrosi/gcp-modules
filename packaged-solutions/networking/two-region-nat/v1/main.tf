@@ -67,7 +67,7 @@ resource "google_compute_router_nat" "cloud_nat_region_2" {
 
 resource "google_compute_route" "route" {
   project          = var.project_id
-  name             = "nat-default-route"
+  name             = "${var.network_name}-nat-default-route"
   dest_range       = "0.0.0.0/0"
   network          = var.network_self_link
   next_hop_gateway = "default-internet-gateway"
