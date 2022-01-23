@@ -20,35 +20,13 @@
 resource "google_storage_bucket" "billing_sink_bucket" {
   project   = var.project_id
   location  = var.gcs_bucket_location
-  name      = var.gcs_bucket_name
+  name      = "${var.gcs_bucket_name}-${random_string.random_string.result}"
 
   uniform_bucket_level_access = true
 
   retention_policy {
     is_locked         = var.gcs_bucket_lock_enabled
     retention_period  = var.gcs_bucket_retention_period
-  }
-
-  lifecycle_rule {
-    action {
-      type          = "SetStorageClass"
-      storage_class = "NEARLINE"
-    }
-    condition {
-      age = var.object_age_move_to_nearline
-    }
-  }
-
-
-  lifecycle_rule {
-    action {
-      type          = "SetStorageClass"
-      storage_class = "COLDLINE"
-    }
-    condition {
-      age                   = var.object_age_move_to_coldline
-      matches_storage_class = ["NEARLINE",]
-    }
   }
 
 }
@@ -72,4 +50,12 @@ resource "google_storage_bucket_iam_member" "gcs_sink_writer_permission" {
   bucket  = google_storage_bucket.billing_sink_bucket.name
   member  = google_logging_billing_account_sink.billing_log_sink.writer_identity
   role    = "roles/storage.objectCreator"
+}
+
+resource "random_string" "random_string" {
+  length = 10
+  lower = true
+  upper = false
+  special = false
+  number = true
 }

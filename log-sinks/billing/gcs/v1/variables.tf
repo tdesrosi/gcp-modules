@@ -66,13 +66,3 @@ variable "billing_account" {
   type        = string
   description = "Billing Account ID for sink to collect logs from"
 }
-
-variable "object_age_move_to_nearline" {
-  type        = number
-  description = "Age of object, in days, in bucket before it's move to Nearline. Understand pricing before selecting: https://cloud.google.com/storage/pricing."
-}
-
-variable "object_age_move_to_coldline" {
-  type        = number
-  description = "Age of object, in days, in bucket before it's move to Nearline. Understand pricing before selecting: https://cloud.google.com/storage/pricing."
-}

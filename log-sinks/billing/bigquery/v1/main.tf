@@ -46,3 +46,4 @@ resource "google_logging_billing_account_sink" "billing_log_sink" {
   Sink created after dataset available
   Until BQ IAM may be altered in another resource block, must manually add writer identity or add to project IAM
 */
+
