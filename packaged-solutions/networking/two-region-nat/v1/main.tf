@@ -38,7 +38,7 @@ resource "google_compute_router" "cloud_nat_router_region_2" {
   name    = "${var.network_name}-${var.region_2}-nat-router"
   project = var.project_id
   region  = var.region_2
-  network = google_compute_network.network.self_link
+  network = var.network_self_link
   bgp {
     asn = var.cloud_router_asn_number_region_2
   }
