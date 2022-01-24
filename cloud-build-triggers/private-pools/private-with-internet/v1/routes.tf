@@ -3,7 +3,7 @@
   Route
  *****************************************/
 
-resource "google_compute_route" "route" {
+resource "google_compute_route" "route_to_gcp_apis" {
   project          = var.project_id
   name             = "private-api-access-route"
   dest_range       = "199.36.153.8/30"
@@ -12,7 +12,7 @@ resource "google_compute_route" "route" {
   priority         = 500
 }
 
-resource "google_compute_route" "route" {
+resource "google_compute_route" "default_route" {
   project          = var.project_id
   name             = "${var.network_name}-nat-default-route"
   dest_range       = "0.0.0.0/0"
