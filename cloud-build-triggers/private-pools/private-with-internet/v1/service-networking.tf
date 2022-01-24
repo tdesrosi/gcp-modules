@@ -11,7 +11,6 @@ resource "google_compute_global_address" "private_ips_for_pool" {
 
 
 resource "google_service_networking_connection" "private_pool" {
-  project                 = var.project_id
   network                 = google_compute_network.network.id
   reserved_peering_ranges = [google_compute_global_address.private_ips_for_pool.name]
   service                 = "servicenetworking.googleapis.com"
