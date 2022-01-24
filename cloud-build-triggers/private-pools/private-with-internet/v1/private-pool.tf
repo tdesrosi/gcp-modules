@@ -11,7 +11,7 @@ resource "google_cloudbuild_worker_pool" "pipelines_private_pool" {
   name     = "cloud-build-private-pool"
 
   worker_config {
-    disk_size_gb    = 0
+    disk_size_gb    = 100
     machine_type    = "e2-standard-8"
     no_external_ip  = true
   }
