@@ -49,5 +49,5 @@ variable "project_service_account" {
 
 variable "iam_admin_service_accounts" {
   description = "Service accounts which will need IAM permission to add permissions (e.g. add Network User)."
-  type = list()
+  type = list(string)
 }
