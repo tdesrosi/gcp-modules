@@ -42,20 +42,20 @@ resource "google_project_iam_member" "project_admin_service_account_host" {
 resource "google_project_iam_member" "gke_engine_robot_net_user" {
   depends_on = [google_project_service.enable_api, google_project.project, google_compute_shared_vpc_service_project.project_to_shared_service]
   project = var.host_project_id
-  member = "service-${google_project.project.number}@container-engine-robot.iam.gserviceaccount.com"
+  member = "serviceAccount:service-${google_project.project.number}@container-engine-robot.iam.gserviceaccount.com"
   role    = "roles/compute.networkUser"
 }
 
 resource "google_project_iam_member" "gke_engine_robot_host_service_agent" {
   depends_on = [google_project_service.enable_api, google_project.project, google_compute_shared_vpc_service_project.project_to_shared_service]
   project = var.host_project_id
-  member = "service-${google_project.project.number}@container-engine-robot.iam.gserviceaccount.com"
+  member = "serviceAccount:service-${google_project.project.number}@container-engine-robot.iam.gserviceaccount.com"
   role    = "roles/container.hostServiceAgentUser"
 }
 
 resource "google_project_iam_member" "gke_engine_robot_compute_security_admin" {
   depends_on = [google_project_service.enable_api, google_project.project, google_compute_shared_vpc_service_project.project_to_shared_service]
   project = var.host_project_id
-  member = "service-${google_project.project.number}@container-engine-robot.iam.gserviceaccount.com"
+  member = "serviceAccount:service-${google_project.project.number}@container-engine-robot.iam.gserviceaccount.com"
   role    = "roles/compute.securityAdmin"
 }
