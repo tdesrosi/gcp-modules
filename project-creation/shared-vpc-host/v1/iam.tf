@@ -18,6 +18,7 @@
  *****************************************/
 
 locals {
+  iam_admin_service_accounts = toset(var.iam_admin_service_accounts)
   iam_roles = toset(local.iam_role_list)
 
   iam_role_list = [
@@ -50,4 +51,12 @@ resource "google_project_iam_member" "service_account_iam_member" {
   project = google_project.project.project_id
   member = "serviceAccount:${var.project_service_account}"
   role   = each.value
+}
+
+
+resource "google_project_iam_member" "service_account_iam_admin_member" {
+  for_each = local.iam_admin_service_accounts
+  project = google_project.project.project_id
+  member = "serviceAccount:${each.value}"
+  role   = "roles/resourcemanager.projectIamAdmin"
 }

@@ -46,3 +46,8 @@ variable "project_service_account" {
   description = "Service Account responsible for deploying resources in the project"
   type = string
 }
+
+variable "iam_admin_service_accounts" {
+  description = "Service accounts which will need IAM permission to add permissions (e.g. add Network User)."
+  type = string
+}
