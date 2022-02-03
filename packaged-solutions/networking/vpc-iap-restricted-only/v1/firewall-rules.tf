@@ -23,7 +23,7 @@ resource "google_compute_firewall" "firewall_rule_iap" {
 
 resource "google_compute_firewall" "firewall_rule_allow_gcp_apis_range" {
   project         = var.project_id
-  name            = "${var.network_name}-allow-gcp_-pis"
+  name            = "${var.network_name}-allow-gcp-apis"
   network         = google_compute_network.network.self_link
   direction       = "EGRESS"
   priority        = 1000
