@@ -21,6 +21,25 @@ resource "google_compute_firewall" "firewall_rule_iap" {
 
 }
 
+resource "google_compute_firewall" "firewall_rule_allow_gcp_apis_range" {
+  project         = var.project_id
+  name            = "${var.network_name}-allow-gcp_-pis"
+  network         = google_compute_network.network.self_link
+  direction       = "EGRESS"
+  priority        = 1000
+  destination_ranges   = ["199.36.153.4/30"]
+
+  log_config {
+    metadata = var.logging_metadata
+  }
+
+  allow {
+    protocol = "tcp"
+    ports    = ["443"]
+  }
+
+}
+
 resource "google_compute_firewall" "firewall_rule_deny_all_egress" {
   project             = var.project_id
   name                = "${var.network_name}-deny-all-egress-all"
