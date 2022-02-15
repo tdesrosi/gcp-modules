@@ -9,7 +9,7 @@ resource "google_compute_subnetwork" "subnet" {
   network       = var.network_self_link
   region        = var.region
 
-  private_ip_google_access = true
+  private_ip_google_access = var.private_google_access
 
   log_config {
     aggregation_interval  = var.vpc_flow_log_interval

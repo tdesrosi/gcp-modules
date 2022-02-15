@@ -49,3 +49,9 @@ variable "vpc_flow_log_interval" {
 variable "vpc_flow_log_sampling" {
   default = 0.8
 }
+
+variable "private_google_access" {
+  type = bool
+  default = true
+  description = "Use private google access or not"
+}
