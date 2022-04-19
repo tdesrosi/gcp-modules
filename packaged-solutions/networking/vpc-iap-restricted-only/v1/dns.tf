@@ -122,22 +122,6 @@ resource "google_dns_record_set" "restricted_run_app_cname_record" {
   rrdatas       = ["run.app."]
 }
 
-resource "random_string" "random_string_for_api_zone" {
-  length = 4
-  lower = true
-  upper = false
-  special = false
-  number = true
-}
-
-resource "random_string" "random_string_for_gcrio_zone" {
-  length = 4
-  lower = true
-  upper = false
-  special = false
-  number = true
-}
-
 resource "random_string" "random_string_for_runapp_zone" {
   length = 4
   lower = true
