@@ -87,7 +87,7 @@ resource "random_string" "random_string_for_gcrio_zone" {
 }
 
 /******************************************
-  Cloud DNS - Internal - gcrio
+  Cloud DNS - Internal - run app
  *****************************************/
 # run.app
 resource "google_dns_managed_zone" "restricted_run_app_zone" {
