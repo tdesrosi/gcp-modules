@@ -149,7 +149,7 @@ resource "google_dns_managed_zone" "restricted_notebooks_zone" {
 
 resource "google_dns_record_set" "restricted_notebooks_a_record" {
   project       = var.project_id
-  managed_zone  = google_dns_managed_zone.restricted_notebooks_cloud_zone.name
+  managed_zone  = google_dns_managed_zone.restricted_notebooks_zone.name
   name          = "notebooks.googleapis.com."
   rrdatas       = ["199.36.153.4", "199.36.153.5", "199.36.153.6", "199.36.153.7"]
   ttl           = 300
