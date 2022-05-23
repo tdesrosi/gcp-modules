@@ -49,7 +49,7 @@ resource "google_compute_router" "cloud_nat_router_region_2" {
  *****************************************/
 
 resource "google_compute_router_nat" "cloud_nat_region_2" {
-  name                               = "${var.network_name}-${var.region_1}-nat"
+  name                               = "${var.network_name}-${var.region_2}-nat"
   project                            = var.project_id
   router                             = google_compute_router.cloud_nat_router_region_2.name
   region                             = var.region_2
