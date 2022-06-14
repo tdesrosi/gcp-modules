@@ -55,6 +55,17 @@ resource "google_organization_policy" "cloud_sql_restrict_public_ip" {
  *****************************************/
 
 # Enforce uniform bucket-level access
+resource "google_organization_policy" "uniform_bucket_access" {
+  constraint  = "constraints/storage.uniformBucketLevelAccess"
+  org_id      = var.organization_id
+
+  boolean_policy {
+    enforced = true
+  }
+
+}
+
+# Prevent public access on bucket - Not sufficient to stop someone from adding gmail to bucket ACL
 resource "google_organization_policy" "gcs_no_public_access" {
   constraint  = "constraints/storage.publicAccessPrevention"
   org_id      = var.organization_id
