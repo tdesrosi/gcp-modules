@@ -31,6 +31,10 @@ output "network_self_link" {
   value = google_compute_network.network.self_link
 }
 
+output "network_id" {
+  value = google_compute_network.network.id
+}
+
 output "subnet_region_1_self_link" {
   value = google_compute_subnetwork.subnet_1.self_link
 }
