@@ -25,11 +25,11 @@ resource "google_project" "project" {
 }
 
 resource "random_string" "random_string" {
-  length = 4
-  lower = true
-  upper = false
+  length  = 4
+  lower   = true
+  upper   = false
   special = false
-  number = true
+  numeric = true
 }
 
 resource "google_compute_shared_vpc_service_project" "project_to_shared_service" {
