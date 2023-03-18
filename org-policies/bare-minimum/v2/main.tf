@@ -315,7 +315,7 @@ resource "google_organization_policy" "iam_disable_service_account_key_upload" {
 
 # Service account key expiry duration in hours
 resource "google_organization_policy" "iam_service_account_key_expiry_hours" {
-  constraint  = "iconstraints/iam.serviceAccountKeyExpiryHours"
+  constraint  = "constraints/iam.serviceAccountKeyExpiryHours"
   org_id      = var.organization_id
 
   list_policy {
