@@ -321,7 +321,12 @@ resource "google_organization_policy" "iam_service_account_key_expiry_hours" {
   list_policy {
     allow {
       values = [
+        "1h",
+        "8h",
         "24h",
+        "168h",
+        "336h",
+        "720h",
       ]
     }
   }
