@@ -190,7 +190,16 @@ resource "google_organization_policy" "gce_require_os_login" {
 
 }
 
-# PLACEHOLDER for NAT Restriction
+# NAT Restriction
+resource "google_organization_policy" "gce_restrict_nat" {
+  constraint  = "constraints/compute.restrictCloudNATUsage"
+  org_id      = var.organization_id
+
+  boolean_policy {
+    enforced = true
+  }
+
+}
 
 
 # Shielded VMs
