@@ -320,7 +320,7 @@ resource "google_organization_policy" "iam_service_account_key_expiry_hours" {
 
   list_policy {
     allow {
-      values = "24h"
+      values = "24"
     }
   }
 
