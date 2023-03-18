@@ -313,25 +313,26 @@ resource "google_organization_policy" "iam_disable_service_account_key_upload" {
 
 }
 
-# Service account key expiry duration in hours
-resource "google_organization_policy" "iam_service_account_key_expiry_hours" {
-  constraint  = "constraints/iam.serviceAccountKeyExpiryHours"
-  org_id      = var.organization_id
-
-  list_policy {
-    allow {
-      values = [
-        "1h",
-        "8h",
-        "24h",
-        "168h",
-        "336h",
-        "720h",
-      ]
-    }
-  }
-
-}
+# Service account key expiry duration in hours - Seem to be issues with multiple set
+// maybe provider issues, will leave blank for now
+#resource "google_organization_policy" "iam_service_account_key_expiry_hours" {
+#  constraint  = "constraints/iam.serviceAccountKeyExpiryHours"
+#  org_id      = var.organization_id
+#
+#  list_policy {
+#    allow {
+#      values = [
+#        "1h",
+#        "8h",
+#        "24h",
+#        "168h",
+#        "336h",
+#        "720h",
+#      ]
+#    }
+#  }
+#
+#}
 
 # Allowed external Identity Providers for workloads in Cloud IAM
 resource "google_organization_policy" "iam_workload_identity_pool_providers" {
