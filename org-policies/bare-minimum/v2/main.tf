@@ -313,18 +313,18 @@ resource "google_organization_policy" "iam_disable_service_account_key_upload" {
 
 }
 
-# Service account key expiry duration in hours
-resource "google_organization_policy" "iam_service_account_key_expiry_hours" {
-  constraint  = "iconstraints/iam.serviceAccountKeyExpiryHours"
-  org_id      = var.organization_id
-
-  list_policy {
-    allow {
-      values = "24"
-    }
-  }
-
-}
+# Service account key expiry duration in hours - Need to update
+#resource "google_organization_policy" "iam_service_account_key_expiry_hours" {
+#  constraint  = "iconstraints/iam.serviceAccountKeyExpiryHours"
+#  org_id      = var.organization_id
+#
+#  list_policy {
+#    allow {
+#      values = "24"
+#    }
+#  }
+#
+#}
 
 # Allowed external Identity Providers for workloads in Cloud IAM
 resource "google_organization_policy" "iam_workload_identity_pool_providers" {
