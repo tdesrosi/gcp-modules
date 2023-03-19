@@ -24,16 +24,16 @@
   App Engine
  *****************************************/
 
-# Disable Source Code Download
-#resource "google_organization_policy" "app_eng_disable_code_download" {
-#  constraint = "constraints/appengine.disableCodeDownload"
-#  org_id     = var.organization_id
-#
-#  boolean_policy {
-#    enforced = true
-#  }
-#
-#}
+ Disable Source Code Download
+resource "google_organization_policy" "app_eng_disable_code_download" {
+  constraint = "constraints/appengine.disableCodeDownload"
+  org_id     = var.organization_id
+
+  boolean_policy {
+    enforced = true
+  }
+
+}
 
 
 /******************************************
