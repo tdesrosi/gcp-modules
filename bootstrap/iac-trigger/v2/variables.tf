@@ -23,12 +23,6 @@ variable "project_id" {
   default     = ""
 }
 
-variable "location" {
-  description = "Location of connection"
-  type = string
-  default = "us-central1"
-}
-
 variable "push_branch_trigger_plan" {
   default = "development"
   type = string
@@ -60,5 +54,11 @@ variable "gcs_terraform_backend_bucket_location" {
 variable "first_trigger_folder" {
   description = "Do not change unless you've renamed the folder hosting your trigger pipeline"
   default     = "00-triggers"
+  type        = string
+}
+
+variable "sa_name" {
+  description = "Do not change unless you want a different SA name"
+  default     = "cloud-build-sa-00-trigger"
   type        = string
 }

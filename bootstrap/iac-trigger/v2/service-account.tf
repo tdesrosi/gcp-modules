@@ -17,6 +17,6 @@
   Create Service Account to run pipeline for 00-trigger
  *****************************************/
 resource "google_service_account" "sa_00_trigger" {
-  account_id  = "cloud-build-sa-00-trigger"
+  account_id  = var.sa_name
   project     = var.project_id
 }

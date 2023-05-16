@@ -20,7 +20,6 @@
 resource "google_cloudbuild_trigger" "push_and_plan_trigger" {
   name = "${var.first_trigger_folder}-push-and-plan"
   project = var.project_id
-  location = var.location
 
   service_account = google_service_account.sa_00_trigger.id
 
@@ -62,7 +61,6 @@ resource "google_cloudbuild_trigger" "push_and_plan_trigger" {
 resource "google_cloudbuild_trigger" "pull_and_apply_trigger" {
   name = "${var.first_trigger_folder}-pull-and-apply"
   project = var.project_id
-  location = var.location
 
   service_account = google_service_account.sa_00_trigger.id
 
