@@ -20,7 +20,6 @@
 resource "google_cloudbuild_trigger" "push_and_plan_trigger" {
   name = "${var.first_trigger_folder}-push-and-plan"
   project = var.project_id
-  location = "us-central1"
 
   service_account = google_service_account.sa_00_trigger.id
 
