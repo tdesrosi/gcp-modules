@@ -40,7 +40,7 @@ resource "google_cloudbuild_trigger" "push_and_plan_trigger" {
     // Location to write logs to for the run
     logs_bucket = "${google_storage_bucket.cloud_build_logs_bucket.url}/${each.value}"
     step {
-      name = "cloud-builders/gcloud"
+      name = "gcr.io/cloud-builders/gcloud"
       dir = "./${each.value}/"
       args = ["storage", "cp", "gs://${google_storage_bucket.tfvars_files_bucket.url}/${each.value}/*", "."]
       wait_for = ["-"]
@@ -89,7 +89,7 @@ resource "google_cloudbuild_trigger" "pull_and_apply_trigger" {
     // Location to write logs to for the run
     logs_bucket = "${google_storage_bucket.cloud_build_logs_bucket.url}/${each.value}"
     step {
-      name = "cloud-builders/gcloud"
+      name = "gcr.io/cloud-builders/gcloud"
       dir = "./${each.value}/"
       args = ["storage", "cp", "gs://${google_storage_bucket.tfvars_files_bucket.url}/${each.value}/*", "."]
       wait_for = ["-"]
