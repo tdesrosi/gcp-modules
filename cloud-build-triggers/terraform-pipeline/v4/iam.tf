@@ -38,5 +38,5 @@ resource "google_storage_bucket_iam_member" "cloud_build_sa_tfvars_gcs_bucket" {
   for_each = local.folder_list
   bucket = google_storage_bucket.tfvars_files_bucket.id
   member = "serviceAccount:cbsa-${each.value}@${var.project_id}.iam.gserviceaccount.com"
-  role   = "roles/storage.viewer"
+  role   = "roles/storage.objectViewer"
 }

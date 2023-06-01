@@ -28,3 +28,10 @@ resource "google_storage_bucket_iam_member" "cloud_build_sa_cloud_build_logs_gcs
   member = "serviceAccount:${var.pipeline_service_account}"
   role   = "roles/storage.admin"
 }
+
+resource "google_storage_bucket_iam_member" "cloud_build_sa_tfvars_gcs_bucket" {
+  for_each = local.folder_list
+  bucket = google_storage_bucket.tfvars_files_bucket.id
+  member = "serviceAccount:${var.pipeline_service_account}"
+  role   = "roles/storage.objectViewer"
+}
