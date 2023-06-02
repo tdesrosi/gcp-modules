@@ -42,10 +42,10 @@ resource "google_cloudbuild_trigger" "push_and_plan_trigger" {
     logs_bucket = "${google_storage_bucket.cloud_build_logs_bucket.url}/${each.value}"
 
     step {
-      name = "gcr.io/cloud-builders/gcloud"
+      name = "gcr.io/google.com/cloudsdktool/cloud-sdk:slim"
       dir = "./${each.value}/"
+      entrypoint = "gcloud"
       args = ["gcloud", "storage", "cp", "${google_storage_bucket.tfvars_files_bucket.url}/${each.value}/*", "."]
-      wait_for = ["-"]
     }
     step {
       name = "hashicorp/terraform"
@@ -93,7 +93,7 @@ resource "google_cloudbuild_trigger" "pull_and_apply_trigger" {
     logs_bucket = "${google_storage_bucket.cloud_build_logs_bucket.url}/${each.value}"
 
     step {
-      name = "gcr.io/cloud-builders/gcloud"
+      name = "gcr.io/google.com/cloudsdktool/cloud-sdk"
       dir = "./${each.value}/"
       args = ["gcloud", "storage", "cp", "${google_storage_bucket.tfvars_files_bucket.url}/${each.value}/*", "."]
       wait_for = ["-"]
