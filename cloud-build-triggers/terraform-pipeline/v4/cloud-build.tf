@@ -45,7 +45,7 @@ resource "google_cloudbuild_trigger" "push_and_plan_trigger" {
       name = "gcr.io/google.com/cloudsdktool/cloud-sdk:slim"
       dir = "./${each.value}/"
       entrypoint = "gcloud"
-      args = ["gcloud", "storage", "cp", "${google_storage_bucket.tfvars_files_bucket.url}/${each.value}/*", "."]
+      args = ["storage", "cp", "${google_storage_bucket.tfvars_files_bucket.url}/${each.value}/*", "."]
     }
     step {
       name = "hashicorp/terraform"
