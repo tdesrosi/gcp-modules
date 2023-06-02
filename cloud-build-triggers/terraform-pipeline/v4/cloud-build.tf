@@ -44,7 +44,7 @@ resource "google_cloudbuild_trigger" "push_and_plan_trigger" {
     step {
       name = "gcr.io/cloud-builders/gcloud"
       dir = "./${each.value}/"
-      args = ["storage", "cp", "gs://${google_storage_bucket.tfvars_files_bucket.url}/${each.value}/*", "."]
+      args = ["storage", "cp", "${google_storage_bucket.tfvars_files_bucket.url}/${each.value}/*", "."]
       wait_for = ["-"]
     }
     step {
@@ -95,7 +95,7 @@ resource "google_cloudbuild_trigger" "pull_and_apply_trigger" {
     step {
       name = "gcr.io/cloud-builders/gcloud"
       dir = "./${each.value}/"
-      args = ["storage", "cp", "gs://${google_storage_bucket.tfvars_files_bucket.url}/${each.value}/*", "."]
+      args = ["storage", "cp", "${google_storage_bucket.tfvars_files_bucket.url}/${each.value}/*", "."]
       wait_for = ["-"]
     }
     step {
