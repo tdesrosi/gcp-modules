@@ -29,7 +29,7 @@ resource "google_cloudbuild_trigger" "push_and_plan_trigger" {
     owner = var.github_repo_owner
     name = var.github_repo_name
     push {
-      branch = var.push_branch_trigger_plan
+      branch = "${each.value}-plan"
     }
   }
 
@@ -79,7 +79,7 @@ resource "google_cloudbuild_trigger" "pull_and_apply_trigger" {
     owner = var.github_repo_owner
     name = var.github_repo_name
     pull_request {
-      branch = var.pull_branch_trigger_apply
+      branch = "${each.value}-apply"
       // Below flag requires that when submitting the pull request the comment must include "/gcbrun"
       comment_control = "COMMENTS_ENABLED"
     }
@@ -93,10 +93,10 @@ resource "google_cloudbuild_trigger" "pull_and_apply_trigger" {
     logs_bucket = "${google_storage_bucket.cloud_build_logs_bucket.url}/${each.value}"
 
     step {
-      name = "gcr.io/google.com/cloudsdktool/cloud-sdk"
+      name = "gcr.io/google.com/cloudsdktool/cloud-sdk:slim"
       dir = "./${each.value}/"
-      args = ["gcloud", "storage", "cp", "${google_storage_bucket.tfvars_files_bucket.url}/${each.value}/*", "."]
-      wait_for = ["-"]
+      entrypoint = "gcloud"
+      args = ["storage", "cp", "${google_storage_bucket.tfvars_files_bucket.url}/${each.value}/*", "."]
     }
     step {
       name = "hashicorp/terraform"
