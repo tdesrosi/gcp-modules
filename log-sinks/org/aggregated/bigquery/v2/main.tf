@@ -42,16 +42,8 @@ resource "google_logging_organization_sink" "org_log_sink" {
 /******************************************
   BigQuery IAM
  *****************************************/
-
-//resource "google_bigquery_dataset_access" "dataset_access" {
-//  project       = var.project_id
-//  dataset_id    = google_bigquery_dataset.sink_dataset.dataset_id
-//  special_group = "projectWriters:${google_logging_organization_sink.org_log_sink.writer_identity}"
-//}
-//
-///*
-//  IAM set inside bq resource block
-//  Writer identity only provided after sink created
-//  Sink created after dataset available
-//  Until BQ IAM may be altered in another resource block, must manually add writer identity or add to project IAM
-//*/
+resource "google_bigquery_dataset_iam_member" "org_log_sink_writer_bq_permission" {
+  dataset_id = google_bigquery_dataset.sink_dataset.dataset_id
+  member     = "serviceAccount:service-org-${var.organization_id}@gcp-sa-logging.iam.gserviceaccount.com"
+  role       = "roles/bigquery.dataEditor"
+}
