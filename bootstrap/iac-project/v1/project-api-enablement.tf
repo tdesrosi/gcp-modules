@@ -70,7 +70,7 @@ locals {
     "dataflow.googleapis.com",
     "dataproc.googleapis.com",
     "metastore.googleapis.com",
-    "gameservices.googleapis.com",
+    # "gameservices.googleapis.com", # Not supported in joonix
     "gkeconnect.googleapis.com",
     "gkehub.googleapis.com",
     "managedidentities.googleapis.com",
@@ -104,8 +104,8 @@ locals {
 }
 
 resource "google_project_service" "enable_api" {
-  for_each            = local.apis_to_enable
-  project             = var.project_id
-  service             = each.value
-  disable_on_destroy  = false
+  for_each           = local.apis_to_enable
+  project            = var.project_id
+  service            = each.value
+  disable_on_destroy = false
 }
