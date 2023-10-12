@@ -22,16 +22,6 @@ variable "project_id" {
   type        = string
 }
 
-variable "org_id" {
-  description = "The org ID of where the project will reside."
-  type        = string
-}
-
-variable "billing_account_id" {
-  description = "Billing Account ID where costs of the project will be charged."
-  type        = string
-}
-
 variable "extra_apis_to_enable" {
   default = []
   type = list
