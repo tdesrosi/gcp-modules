@@ -106,7 +106,7 @@ locals {
 resource "google_project_service" "enable_api" {
   depends_on          = [google_project.project]
   for_each            = local.apis_to_enable
-  project             = google_project.project.project_id
+  project             = var.project_id
   service             = each.value
   disable_on_destroy  = false
 }

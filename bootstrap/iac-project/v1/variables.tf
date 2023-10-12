@@ -17,8 +17,8 @@
   Input Variables
  *****************************************/
 
-variable "unique_project_id" {
-  description = "A unique ID for your org to start all project IDs"
+variable "project_id" {
+  description = "Pre-billing admitted project id"
   type        = string
 }
 
