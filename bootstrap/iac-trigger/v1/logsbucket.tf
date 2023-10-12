@@ -38,5 +38,5 @@ resource "random_string" "build_logs_random_string" {
   lower     = true
   upper     = false
   special   = false
-  number    = true
+  numeric    = true
 }

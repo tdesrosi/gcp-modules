@@ -38,5 +38,5 @@ resource "random_string" "first_trigger_random_string" {
   lower     = true
   upper     = false
   special   = false
-  number    = true
+  numeric    = true
 }

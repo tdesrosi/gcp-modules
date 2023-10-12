@@ -32,5 +32,5 @@ resource "random_string" "random_string" {
   lower     = true
   upper     = false
   special   = false
-  number    = true
+  numeric    = true
 }
