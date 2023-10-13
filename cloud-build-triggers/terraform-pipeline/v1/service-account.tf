@@ -16,8 +16,16 @@
 /******************************************
   Create Service Account to run pipeline for 00-trigger
  *****************************************/
+
+# tdesrosi@ Importing an existing service account I had as this was already 
+# set up with billing.
+import {
+  to = google_service_account.cloud_build_service_account
+  id = "cbsa-${each.value}"
+}
+
 resource "google_service_account" "cloud_build_service_account" {
-  for_each = local.folder_list
+  for_each    = local.folder_list
   account_id  = "cbsa-${each.value}"
   description = "Cloud Build Service Account (cbsa) for ${each.value} pipeline"
   project     = var.project_id
